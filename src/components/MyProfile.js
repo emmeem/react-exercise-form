@@ -1,10 +1,83 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './myProfile.less';
 
 class MyProfile extends Component {
+  state = {
+    name: "",
+    gender: "",
+    des: "",
+    read: false,
+  }
+
+  handleName = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
+  handleGender = (event) => {
+    this.setState({
+      gender: event.target.value,
+    });
+  };
+
+  handleDes = (event) => {
+    this.setState({
+      des: event.target.value,
+    });
+  };
+
+  handleRead = (event) => {
+    this.setState({
+      read: true,
+    });
+  }
+
+  handleSubmit = (event) => {
+    alert(JSON.stringify(this.state));
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form></form>
+      <form onSubmit={this.handleSubmit}>
+        <h1>My Profile</h1>
+        <label>Name</label>
+        <br />
+        <input
+          type="text"
+          value={this.state.name}
+          onChange={this.handleName}
+        />
+        <br />
+        <label>Gender</label>
+        <br />
+        <select onChange={this.handleGender}>
+          <option >male</option>
+          <option >female</option>
+        </select>
+        <br />
+        <label>Description</label>
+        <br />
+        <textarea
+          cols="18"
+          rows="4"
+          value={this.state.des}
+          onChange={this.handleDes}>
+        </textarea>
+        <br/>
+        <label>
+        <input type="checkbox" 
+        value="Man"
+        onChange={this.handleRead}/>
+        I have read the terms of conduct
+        </label>
+        <br />
+        <input type="submit"
+          value="Submit"
+          disabled={!this.state.name | !this.state.gender | !this.state.des | !this.state.read}
+        />
+      </form>
     );
   }
 }
