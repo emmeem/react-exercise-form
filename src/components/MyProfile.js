@@ -47,22 +47,24 @@ class MyProfile extends Component {
         <input
           type="text"
           value={this.state.name}
+          placeholder='Your Name'
           onChange={this.handleName}
         />
         <br />
         <label>Gender</label>
         <br />
         <select onChange={this.handleGender}>
-          <option >male</option>
-          <option >female</option>
+          <option value="male">male</option>
+          <option value="female">female</option>
         </select>
         <br />
         <label>Description</label>
         <br />
         <textarea
-          cols="18"
+          cols="28"
           rows="4"
           value={this.state.des}
+          placeholder="Description about yourself"
           onChange={this.handleDes}>
         </textarea>
         <br/>
